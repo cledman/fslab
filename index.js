@@ -14,8 +14,6 @@ app.get('/', async(request, response) =>{
     const content = await axios.get('https://como-fazer-2a603.firebaseio.com/teste.json')
     console.log(content.data)
     response.render('index',{i: content.data})
-
-
     /*
     i++
     response.send(`<h1>Olá Fullstack lab ${i}   </h1>`)//usando essa aspas, podemos incorporar variáveis ali. Isso é o chamado Template String.
