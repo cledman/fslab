@@ -13,7 +13,7 @@ const nova = async(req,res) =>{
 }
 
 const list = async(req,res) =>{
-    const categorias =await  api.list('categorias') //categorias ali é o Key da função list do API
+    const categorias =await  api.list('categorias') //categorias ali é a Key da função list do API
     res.render('categorias/index', { categorias }) 
 }
 

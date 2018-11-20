@@ -14,7 +14,7 @@ const list = async(key) =>{
                                 })
         return objetos
     }
-    return [] //se não tiver o content.data, retorna um vetor vazio.
+    return [] //se não tiver o content.data, devemos retornar um vetor vazio.
 }
 
 const apagar = async(key, id) =>{
@@ -22,14 +22,12 @@ const apagar = async(key, id) =>{
     return true
 }
 
-
 const get = async(key, id) =>{
     const content = await axios.get(`${baseUrl}/${key}/${id}.json`)// aqui fez como template string só pra exemplificar, mas pode usar como fizemos no "apagar"
     return {
             id: id,
             ...content.data
-        }
-  
+        }  
 }
 
 const update = async(key,id, data) =>{

@@ -1,9 +1,30 @@
-<a href="/categorias/nova">Nova categoria</a><br />
-<% categorias.forEach(categoria => { %>
-    <%= categoria.categoria %> <a href="/categorias/editar/<%= categoria.id %>">Editar</a> | 
-   <a href="/categorias/excluir/<%= categoria.id %>">Excluir</a><br />
-<% }) %>
-    
+<%- include('../header') %>
+<a href="/categorias/nova" class="btn btn-light">Nova categoria</a><br />
+
+<table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Categoria</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% categorias.forEach(categoria => { %>        
+      <tr>
+        <td><%= categoria.categoria %></td>
+        <td>
+            <a href="/categorias/editar/<%= categoria.id %>">Editar</a> | 
+            <a href="/categorias/excluir/<%= categoria.id %>">Excluir</a>
+        </td>                
+      </tr>
+      <% }) %>    
+    </tbody>
+  </table>
+
+
+
+
+<%- include('../footer') %>    
 
 
 <!-- aqui ele está andando pelo objeto JSON, utilizando a CATEGORIAS como chave-->
