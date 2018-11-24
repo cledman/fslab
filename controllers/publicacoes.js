@@ -1,15 +1,17 @@
 const api = require('../api')
 
-const novaForm = (req, res) =>{
-    res.render('publicacoes/nova')
+const novaForm = async(req, res) =>{
+    const categorias = await api.list('categorias')
+    res.render('publicacoes/nova', { categorias })
 }
 
 const nova = async(req,res) =>{
-    await api.create('categorias', {
-     categoria: req.body.categoria
+    await api.create('publicacoes/' + req.body.categoria, {
+     titulo: req.body.titulo,
+     conteudo: req.body.conteudo
  })
 
- res.redirect('/categorias')
+ res.redirect('/publicacoes')
 }
 
 const list = async(req,res) =>{
