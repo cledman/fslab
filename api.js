@@ -1,8 +1,9 @@
 const axios = require('axios')
 const baseUrl = 'https://como-fazer-2a603.firebaseio.com/'
+const auth = 'sEzE9qFtfgXtFGeBWskjHjZUD5tkusiSR6YprArx'
 
 const list = async(key) =>{
-    const content = await axios.get(baseUrl+key+'.json')
+    const content = await axios.get(baseUrl+key+'.json?auth='+auth)
     if(content.data){
         const objetos = Object
                                 .keys(content.data)
@@ -18,12 +19,12 @@ const list = async(key) =>{
 }
 
 const apagar = async(key, id) =>{
-    await axios.delete(baseUrl + key + '/' + id + '.json')
+    await axios.delete(baseUrl + key + '/' + id + '.json?auth='+auth)
     return true
 }
 
 const get = async(key, id) =>{
-    const content = await axios.get(`${baseUrl}/${key}/${id}.json`)// aqui fez como template string só pra exemplificar, mas pode usar como fizemos no "apagar"
+    const content = await axios.get(`${baseUrl}/${key}/${id}.json?auth=`+auth)//  ` aqui fez como template string só pra exemplificar, mas pode usar como fizemos no "apagar"
     return {
             id: id,
             ...content.data
@@ -31,12 +32,12 @@ const get = async(key, id) =>{
 }
 
 const update = async(key,id, data) =>{
-    await axios.put(`${baseUrl}/${key}/${id}.json`, data)    
+    await axios.put(`${baseUrl}/${key}/${id}.json?auth=`+auth, data)    
     return true
 }
 
 const create = async(key, data) =>{
-    await axios.post(`${baseUrl}/${key}.json`, data)
+    await axios.post(`${baseUrl}/${key}.json?auth=`+auth, data)
     return true
 }
 
