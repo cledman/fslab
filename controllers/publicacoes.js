@@ -11,7 +11,7 @@ const nova = async(req,res) =>{
      conteudo: req.body.conteudo
  })
 
- res.redirect('/publicacoes')
+ res.redirect('/publicacoes/categoria/'+req.body.categoria)
 }
 
 const list = async(req,res) =>{
@@ -21,8 +21,8 @@ const list = async(req,res) =>{
 }
 
 const excluir = async(req, res)=>{
-    await api.apagar('publicacoes', req.params.id)
-    res.redirect('/publicacoes')
+    await api.apagar('publicacoes/' + req.params.categoria, req.params.id)
+    res.redirect('/publicacoes/categoria/'+ req.params.categoria)
 }
 
 const editarForm =  async(req, res) =>{
